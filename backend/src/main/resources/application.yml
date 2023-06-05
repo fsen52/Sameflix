@@ -1,0 +1,39 @@
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: never
+  port: 8080
+  servlet:
+    context-path: /sameflix/api
+
+spring:
+  #
+  #  datasource:
+  #    password: prorentuser
+  #    url: jdbc:postgresql://localhost:5432/prorent_db
+  #    username: prorentuser
+  #    driver-class-name: org.postgresql.Driver
+  data:
+    mongodb:
+      uri:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    show-sql: true
+  servlet:
+    multipart:
+      max-request-size: 2MB
+      max-file-size: 2MB
+
+backendapi:
+  app:
+    jwtSecret: sameFlixSecretKey
+    jwtExpirationMs: 86400000
