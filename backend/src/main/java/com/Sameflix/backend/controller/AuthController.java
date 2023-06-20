@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Sameflix.backend.Domain.User;
+import com.Sameflix.backend.domain.User;
+import com.Sameflix.backend.domain.dto.LoginDTO;
 import com.Sameflix.backend.service.UserService;
 
 
@@ -31,6 +32,14 @@ public class AuthController {
 		
 		User returnedUser = userService.register(user);
 		return new ResponseEntity<>(returnedUser,HttpStatus.CREATED);
+		
+	}
+	
+	@PostMapping("/login")
+	public ResponseEntity<String> loginUser(@RequestBody LoginDTO loginDTO) {
+		
+		String returnedData = userService.login(loginDTO);
+		return new ResponseEntity<>(returnedData,HttpStatus.OK);
 		
 	}
 
